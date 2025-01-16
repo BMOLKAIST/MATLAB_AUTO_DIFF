@@ -1,4 +1,4 @@
-# MATLAB_AUTO_DIFF
+# MATLAB automatic differentiation
 
 Complex reverse mode automatic differentiation for MATLAB
 
