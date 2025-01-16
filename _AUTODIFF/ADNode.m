@@ -1,4 +1,11 @@
 %% MATLAB Automatic Differentiation Node
+% complex and multidimention added by herve hugonnet c.f complex chain rule
+% https://math.stackexchange.com/questions/1445815/complex-chain-rule-for-complex-valued-functions
+% modify it to ease integration :
+%                            f=f(z)   g=g(w)   h=g(f(z))
+%      dh /dz =     dg/dw *      df /dz +conj(dconj(g)/dw)*(dconj(f)/dz)
+%(dconj(h)/dz)=conj(dg/dw)*(dconj(f)/dz)+     dconj(g)/dw *      df /dz
+% we compute df/dz'
 %
 %  Object-oriented reverse mode automatic differentiation.
 %  Modified for use here, originally available (04/2017) from:
@@ -23,13 +30,7 @@
 %      ctranspose
 %
 %
-% complex and multidimention added by herve hugonnet c.f complex chain rule
-% https://math.stackexchange.com/questions/1445815/complex-chain-rule-for-complex-valued-functions
-% modify it to ease integration :
-%                            f=f(z)   g=g(w)   h=g(f(z))
-%      dh /dz =     dg/dw *      df /dz +conj(dconj(g)/dw)*(dconj(f)/dz)
-%(dconj(h)/dz)=conj(dg/dw)*(dconj(f)/dz)+     dconj(g)/dw *      df /dz
-% we compute df/dz'
+
 classdef ADNode < handle
     %% Node in the function evalution graph
     properties (Constant)
